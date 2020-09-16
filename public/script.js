@@ -1,6 +1,5 @@
 const main = document.getElementById("main");
 let sounds = [
-  'fart',
   'win',
   'lose',
   'correct',
@@ -10,11 +9,18 @@ let sounds = [
 for (let sound of sounds) {
   let div = document.createElement("div");
   let button = document.createElement("button");
+  let audio = document.createElement("audio");
+  let source = document.createElement("source");
   
+  source.src = "/media/" + sound + ".mp3";
+  
+  audio.appendChild(source);
+
+  button.innerText = sound;
   
   div.classList.add("sound");
-  button.innerText = sound;
   div.appendChild(button);
+  div.appendChild(audio);
 
   
   main.appendChild(div);
