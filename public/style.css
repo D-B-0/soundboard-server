@@ -67,18 +67,23 @@ footer {
 
 main {
   display: flex;
-  align-items: center;
+  justify-content: center;
   margin: auto;
 }
 
 #main {
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: repeat(9, 10rem);
   grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
 }
 
-main#main div button {
-  /* display: block; */
-  width: 3fr;
-  height: 3fr;
+#main div button {
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  background-color: rebeccapurple;
+  border-radius: 50%;
+  color: inherit;
+  outline: none;
+  border: solid 1rem transparent;
 }
