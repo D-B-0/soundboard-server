@@ -65,11 +65,20 @@ footer {
   background-color: rgb(150, 68, 231);
 }
 
-main#main {
-  display: grid;
+main {
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
-main#main div {
-  display: inline-block;
-  grid
+#main {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+}
+
+main#main div button {
+  /* display: block; */
+  width: 3fr;
+  height: 3fr;
 }
