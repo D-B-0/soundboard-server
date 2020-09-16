@@ -8,11 +8,16 @@ body {
   font-family: sans-serif;
   margin: 2em 1em;
   line-height: 1.5em;
+  background-color: rebeccapurple;
+  color: white;
+}
+
+a {
+  color: rgb(255, 0, 255);
 }
 
 h1 {
-  font-style: italic;
-  color: #373fff;
+  color: #b8bcff;
   max-width: calc(100% - 5rem);
   line-height: 1.1;
 }
@@ -55,9 +60,15 @@ form button:hover {
 }
 
 footer {
-  margin-top: 3em;
-  padding-top: 1.5em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  padding: 1.5em 1rem;
   border-top: 1px solid lightgrey;
+
+  background-color: rgb(150, 68, 231);
 }
 
 main#main {
