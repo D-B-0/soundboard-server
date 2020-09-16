@@ -10,13 +10,17 @@ app.get("/", (request, response) => {
 });
 
 io.on('connection', (socket) => {
-  console.log("connected");
+  console.log("A user connected");
+  
   socket.on('sendSound', (data) => {
-    console.log("connected");
-    socket.emit('reciveSound', data)
+    console.log("Sending sound to clients:", data);
+    io.emit('reciveSound', data);
+  });
+
+  socket.on('disconnect', function () {
+    console.log('A user disconnected');
   });
 });
-
 
 server.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + process.env.PORT);
