@@ -4,7 +4,7 @@ socket.on('connect', () => {
   console.log("Connceted");
 });
 
-socket.on('sound', (soundId) => {
+socket.on('reciveSound', (soundId) => {
   console.log("Playing sound with id:", soundId);
   playAudio(soundId);
 });
@@ -27,7 +27,7 @@ const main = document.getElementById("main");
 
     button.innerText = audioInfo[soundId].name;
     button.addEventListener('click', () => {
-      socket.emit('sound', soundId)
+      socket.emit('sendSound', soundId);
       // playAudio(soundId);
     });
     

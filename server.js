@@ -11,8 +11,12 @@ app.get("/", (request, response) => {
 
 io.on('connection', (socket) => {
   console.log("connected");
-  socket.emit('sound', 'monster-kill')
+  socket.on('sendSound', (data) => {
+    console.log("connected");
+    socket.emit('reciveSound', data)
+  });
 });
+
 
 server.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + process.env.PORT);
