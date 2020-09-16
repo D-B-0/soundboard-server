@@ -1,11 +1,12 @@
 /* this file is loaded by index.html and styles the page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Poppins, sans-serif;
   margin: 2em 1em;
   line-height: 1.5em;
   background-color: rgb(89, 38, 139);
@@ -23,10 +24,12 @@ h1 {
 
 .title {
   width: 100%;
+  font-size: 2.7rem;
   text-align: center;
 }
 
 input {
+  font-family: inherit;
   border: 1px solid silver;
   background-color: rgb(150, 68, 231);
   color: white;
@@ -35,21 +38,6 @@ input {
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
-}
-
-form button {
-  background-color: #bbbbf2;
-  border: 2px solid currentColor;
-  border-radius: .25em;
-  cursor: pointer;
-  font-size: inherit;
-  line-height: 1.4em;
-  padding: 0.25em 1em;
-  max-width: 20ch;
-}
-
-form button:hover {
-  background-color: lavender;
 }
 
 footer {
@@ -78,6 +66,7 @@ main {
 }
 
 #main div button {
+  font-family: inherit;
   width: 10rem;
   height: 10rem;
   padding: 1rem;
@@ -86,4 +75,8 @@ main {
   color: inherit;
   outline: none;
   border: none;
+}
+
+#main div button:hover {
+  filter: contrast(120%);
 }
