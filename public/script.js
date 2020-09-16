@@ -4,15 +4,29 @@ socket.on('connect', () => {
   console.log("Connceted");
 });
 
-socket.on('reciveSound', (soundId) => {
-  console.log("Playing sound with id:", soundId);
-  playAudio(soundId);
+socket.on('reciveSound', (data) => {
+  if (data.roomId == roomId) {
+    console.log("Playing sound with id:", data.soundId);
+    playAudio(data.soundId);
+  }
 });
 
 const main = document.getElementById("main");
+const roomIdInput = document.getElementById("roomId");
+roomIdInput.addEventListener('change', () => {
+  localStorage.setItem('roomId', roomIdInput.value);
+  roomId = roomIdInput.value;
+});
+let roomId;
+
 
 (async () => {
   const audioInfo = await (await fetch("/audio-info.json")).json();
+
+  if (localStorage.getItem('roomId') != "") {
+    roomIdInput.value = localStorage.getItem('roomId');
+    roomId = localStorage.getItem('roomId');
+  }
 
   for (const soundId in audioInfo) {
     let div = document.createElement("div");
@@ -27,7 +41,7 @@ const main = document.getElementById("main");
 
     button.innerText = audioInfo[soundId].name;
     button.addEventListener('click', () => {
-      socket.emit('sendSound', soundId);
+      socket.emit('sendSound', {soundId, roomId});
       // playAudio(soundId);
     });
     
