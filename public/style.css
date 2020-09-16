@@ -75,8 +75,10 @@ main {
   color: inherit;
   outline: none;
   border: none;
+  transition: filter .1s ease;
 }
 
-#main div button:hover {
-  filter: contrast(120%);
+#main div button:hover,
+#main div button:active {
+  filter: contrast(150%);
 }
