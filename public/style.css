@@ -8,7 +8,7 @@ body {
   font-family: sans-serif;
   margin: 2em 1em;
   line-height: 1.5em;
-  background-color: rebeccapurple;
+  background-color: rgb(89, 38, 139);
   color: white;
 }
 
@@ -27,16 +27,10 @@ h1 {
   text-align: center;
 }
 
-form {
-  background-color: #eee;
-  display: grid;
-  grid-gap: 1em;
-  padding: 1em;
-  max-width: 40ch;
-}
-
 input {
   border: 1px solid silver;
+  background-color: rgb(150, 68, 231);
+  color: white;
   display: block;
   font-size: 16px;
   margin-bottom: 10px;
@@ -72,6 +66,10 @@ footer {
 }
 
 main#main {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+}
+
+main#main div {
+  display: inline-block;
+  grid
 }
