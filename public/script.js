@@ -52,7 +52,12 @@ let roomId;
     
     main.appendChild(div);
   }
+  setGridColumns()
 })();
+
+function setGridColumns() {
+  main.style.gridTemplateColumns = "10rem ".repeat(Math.floor((window.innerWidth - 20)/(main.firstChild.clientWidth + 10))).trim();
+}
 
 function playAudio(id) {
   let audio = document.getElementById(id);
