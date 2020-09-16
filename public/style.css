@@ -17,6 +17,11 @@ h1 {
   line-height: 1.1;
 }
 
+.title {
+  width: 100%;
+  text-align: center;
+}
+
 form {
   background-color: #eee;
   display: grid;
