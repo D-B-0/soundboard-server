@@ -1,5 +1,16 @@
+const socket = io();
+
+socket.on('connect', () => {
+  console.log(socket.connected); // true
+});
+
+socket.on('disconnect', () => {
+  console.log(socket.connected); // false
+});
+
+const main = document.getElementById("main");
+
 (async () => {
-  const main = document.getElementById("main");
   const audioInfo = await (await fetch("/audio-info.json")).json();
 
   for (const soundId in audioInfo) {
