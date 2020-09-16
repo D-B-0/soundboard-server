@@ -52,11 +52,15 @@ let roomId;
     
     main.appendChild(div);
   }
-  setGridColumns()
+  setGridColumns();
 })();
 
+window.addEventListener('resize', setGridColumns);
+
 function setGridColumns() {
-  main.style.gridTemplateColumns = "10rem ".repeat(Math.floor((window.innerWidth - 20)/(main.firstChild.clientWidth + 10))).trim();
+  let nOfButtonsPerRow = Math.floor((window.innerWidth - 70)/(main.firstChild.clientWidth + 50));
+  console.log(nOfButtonsPerRow);
+  main.style.gridTemplateColumns = "10rem ".repeat(nOfButtonsPerRow).trim();
 }
 
 function playAudio(id) {
