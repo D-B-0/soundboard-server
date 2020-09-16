@@ -1,11 +1,12 @@
 const socket = io();
 
 socket.on('connect', () => {
-  console.log(socket.connected); // true
+  console.log("Connceted");
 });
 
-socket.on('disconnect', () => {
-  console.log(socket.connected); // false
+socket.on('sound', (soundId) => {
+  console.log("Playing sound with id:", soundId);
+  playAudio(soundId);
 });
 
 const main = document.getElementById("main");
@@ -26,7 +27,8 @@ const main = document.getElementById("main");
 
     button.innerText = audioInfo[soundId].name;
     button.addEventListener('click', () => {
-      playAudio(soundId);
+      socket.emit('sound', soundId)
+      // playAudio(soundId);
     });
     
     div.classList.add("sound");

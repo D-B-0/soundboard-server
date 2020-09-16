@@ -9,10 +9,11 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-io.on('connection', () => {
+io.on('connection', (socket) => {
   console.log("connected");
+  socket.emit('sound', 'monster-kill')
 });
 
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+server.listen(process.env.PORT, () => {
+  console.log("Your app is listening on port " + process.env.PORT);
 });
