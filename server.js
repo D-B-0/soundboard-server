@@ -13,6 +13,7 @@ app.get("/", (request, response) => {
 io.on('connection', (socket) => {
   console.log("A user connected");
   socket.on('connect-to-room', (roomId) => {
+    console.log(`A user connected to room "${roomId}"`);
     socket.join(roomId);
     socket.on('sendSound', (soundInfo) => {
       console.log(`Sending sound with id "${soundInfo.soundId}" to clients in room "${roomId}"`);
