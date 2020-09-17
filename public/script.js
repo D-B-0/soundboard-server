@@ -23,7 +23,7 @@ roomIdDisplay.addEventListener('change', () => {
 roomId = urlSearch.get('roomId');
 
 socket.on('connect', () => {
-  console.log("Connceted");
+  console.log("Conncted");
 });
 
 socket.emit('connect-to-room', roomId);
