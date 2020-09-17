@@ -14,7 +14,7 @@
     "node": "12.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/soundboard-server"
+    "url": "https://github.com/Dario-0/soundboard-server"
   },
   "license": "MIT",
   "keywords": [
