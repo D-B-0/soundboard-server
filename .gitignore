@@ -1,3 +1,4 @@
 node_modules
 .glitch-assets
 package-lock.json
+.env
