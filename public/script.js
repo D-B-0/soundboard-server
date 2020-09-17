@@ -1,6 +1,19 @@
 const socket = io();
 
+const main = document.getElementById("main");
+const roomIdElement = document.getElementById("roomId");
+let roomId;
+
+const urlSearch = new URLSearchParams(window.location.search);
+if (urlSearch.get('roomId')) {
+  roomIdElement.innerText += urlSearch.get('roomId');
+} else {
+  roomIdElement.innerText = "You are currently in the public room";
+}
+roomId = urlSearch.get('roomId');
+
 socket.on('connect', () => {
+  socket.join(roomId)
   console.log("Connceted");
 });
 
@@ -10,16 +23,6 @@ socket.on('reciveSound', (data) => {
     playAudio(data.soundId);
   }
 });
-
-const main = document.getElementById("main");
-const roomIdInput = document.getElementById("roomId");
-let roomId;
-
-const urlSearch = new URLSearchParams(window.location.search);
-if (urlSearch.get('roomId') != "") {
-  roomIdInput.innerText = urlSearch.get('roomId');
-  roomId = urlSearch.get('roomId');
-}
 
 (async () => {
   const audioInfo = await (await fetch("/audio-info.json")).json();

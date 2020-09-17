@@ -11,7 +11,7 @@ app.get("/", (request, response) => {
 
 io.on('connection', (socket) => {
   console.log("A user connected");
-  
+  console.log(socket.rooms);
   socket.on('sendSound', (data) => {
     console.log("Sending sound to clients:", data);
     io.emit('reciveSound', data);
