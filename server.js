@@ -9,15 +9,18 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
+
 io.on('connection', (socket) => {
   console.log("A user connected");
-  console.log(socket.rooms);
-  socket.on('sendSound', (data) => {
-    console.log("Sending sound to clients:", data);
-    io.emit('reciveSound', data);
+  socket.on('connect-to-room', (roomId) => {
+    socket.join(roomId);
+    socket.on('sendSound', (data) => {
+      console.log("Sending sound to clients:", data);
+      io.to(roomId).emit('reciveSound', data);
+    });
   });
 
-  socket.on('disconnect', function () {
+  socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
 });

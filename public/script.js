@@ -13,15 +13,14 @@ if (urlSearch.get('roomId')) {
 roomId = urlSearch.get('roomId');
 
 socket.on('connect', () => {
-  socket.join(roomId)
   console.log("Connceted");
 });
 
+socket.emit('connect-to-room', roomId);
+
 socket.on('reciveSound', (data) => {
-  if (data.roomId == roomId) {
-    console.log("Playing sound with id:", data.soundId);
-    playAudio(data.soundId);
-  }
+  console.log("Playing sound with id:", data.soundId);
+  playAudio(data.soundId);
 });
 
 (async () => {
@@ -40,7 +39,7 @@ socket.on('reciveSound', (data) => {
 
     button.innerText = audioInfo[soundId].name;
     button.addEventListener('click', () => {
-      socket.emit('sendSound', {soundId, roomId});
+      socket.emit('sendSound', {soundId});
     });
     
     div.classList.add("sound");
