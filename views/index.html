@@ -18,7 +18,9 @@
   <form action="/" method="get" style="width: 20vw;display: inline-block">
     <input type="text" name="roomId" id="roomId" placeholder="Enter new room" />
     <input type="submit" value="Enter" />
-    <span id="roomIdDisplay">Current room ID:&nbsp;</span>
+    <label for="roomIdDisplay">Display room ID?</label>
+    <input style="display: inline-block; width: auto;" type="checkbox" name="roomIdDisplay" id="roomIdDisplay" />
+    <span id="roomIdElement">Current room ID:&nbsp;</span>
   </form>
   <header>
     <h1 class="title">Soundboard</h1>
