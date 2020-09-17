@@ -15,8 +15,12 @@
 </head>
 
 <body>
-  <div style="width: 25%;">
-    <label id="roomId">Room ID:&nbsp;</label>
+  <div>
+    <label id="roomIdDisplay">Current room ID:&nbsp;</label>
+    <form action="/" method="get">
+      <input type="text" name="roomId" id="roomId" placeholder="Enter new room" />
+      <input type="submit" value="Enter" />
+    </form>
   </div>
   <header>
     <h1 class="title">Soundboard</h1>
