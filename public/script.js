@@ -1,7 +1,7 @@
 const socket = io();
 
 const main = document.getElementById("main");
-const roomIdElement = document.getElementById("roomId");
+const roomIdElement = document.getElementById("roomIdDisplay");
 let roomId;
 
 const urlSearch = new URLSearchParams(window.location.search);
