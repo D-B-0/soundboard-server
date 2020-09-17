@@ -1,10 +1,7 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
+  "name": "soundboard-server",
   "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "description": "A soundboard server to play audio from any davice to any other device.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -17,13 +14,17 @@
     "node": "12.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://glitch.com/edit/#!/soundboard-server"
   },
   "license": "MIT",
   "keywords": [
     "node",
     "glitch",
     "express",
-    ""
+    "soundboard",
+    "socket",
+    "socketio",
+    "socket.io",
+    "real-time"
   ]
 }
