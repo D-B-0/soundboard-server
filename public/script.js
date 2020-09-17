@@ -13,20 +13,16 @@ socket.on('reciveSound', (data) => {
 
 const main = document.getElementById("main");
 const roomIdInput = document.getElementById("roomId");
-roomIdInput.addEventListener('change', () => {
-  localStorage.setItem('roomId', roomIdInput.value);
-  roomId = roomIdInput.value;
-});
 let roomId;
 
+const urlSearch = new URLSearchParams(window.location.search);
+if (urlSearch.get('roomId') != "") {
+  roomIdInput.innerText = urlSearch.get('roomId');
+  roomId = urlSearch.get('roomId');
+}
 
 (async () => {
   const audioInfo = await (await fetch("/audio-info.json")).json();
-
-  if (localStorage.getItem('roomId') != "") {
-    roomIdInput.value = localStorage.getItem('roomId');
-    roomId = localStorage.getItem('roomId');
-  }
 
   for (const soundId in audioInfo) {
     let div = document.createElement("div");
@@ -42,7 +38,6 @@ let roomId;
     button.innerText = audioInfo[soundId].name;
     button.addEventListener('click', () => {
       socket.emit('sendSound', {soundId, roomId});
-      // playAudio(soundId);
     });
     
     div.classList.add("sound");
@@ -59,7 +54,7 @@ window.addEventListener('resize', setGridColumns);
 
 function setGridColumns() {
   let nOfButtonsPerRow = Math.floor((window.innerWidth - 70)/(main.firstChild.clientWidth + 50));
-  console.log(nOfButtonsPerRow);
+  // console.log(nOfButtonsPerRow);
   main.style.gridTemplateColumns = "10rem ".repeat(nOfButtonsPerRow).trim();
 }
 
