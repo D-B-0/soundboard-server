@@ -25,6 +25,7 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + process.env.PORT);
+const port = process.env.PORT || 4000;
+server.listen(port, () => {
+  console.log("Your app is listening on port " + port);
 });
