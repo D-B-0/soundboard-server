@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>🎶 Soundboard</title>
+
+  <link rel="stylesheet" href="/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <form action="/" method="get" style="width: 20vw;display: inline-block">
+    <input type="text" name="roomId" id="roomId" placeholder="Enter new room" />
+    <input type="submit" value="Enter" />
+    <span id="roomIdDisplay">Current room ID:&nbsp;</span>
+  </form>
+  <header>
+    <h1 class="title">Soundboard</h1>
+  </header>
+
+  <main>
+    <section id="main"></section>
+  </main>
+
+  <footer>Made with <a href="https://glitch.com">Glitch</a>!</footer>
+  <!--include the Glitch button to show what the webpage is about and
+      to make it easier for folks to view source and remix -->
+  <div class="glitchButton" style="position:fixed;top:2em;right:20px;"></div>
+  <script src="https://button.glitch.me/button.js" defer></script>
+</body>
+
+</html>
