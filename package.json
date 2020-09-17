@@ -4,11 +4,15 @@
   "description": "A soundboard server to play audio from any davice to any other device.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon serve.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   },
   "engines": {
     "node": "12.x"
