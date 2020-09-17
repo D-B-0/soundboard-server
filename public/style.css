@@ -1,0 +1,88 @@
+/* this file is loaded by index.html and styles the page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  line-height: 1.5em;
+  background-color: rgb(89, 38, 139);
+  color: white;
+}
+
+a {
+  color: rgb(255, 0, 255);
+}
+
+h1 {
+  color: #b8bcff;
+  line-height: 1.1;
+}
+
+.title {
+  width: 100%;
+  font-size: 2.7rem;
+  text-align: center;
+}
+
+input {
+  font-family: inherit;
+  border: 1px solid silver;
+  background-color: rgb(150, 68, 231);
+  color: white;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  padding: 1.5em 1rem;
+  border-top: 1px solid lightgrey;
+
+  background-color: rgb(150, 68, 231);
+}
+
+form {
+  margin: 1rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: repeat(9, 10rem);
+  row-gap: 1rem;
+  column-gap: 1rem;
+}
+
+#main div button {
+  font-family: inherit;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  background-color: rebeccapurple;
+  border-radius: 40%;
+  color: inherit;
+  outline: none;
+  border: none;
+  transition: filter .1s ease;
+}
+
+#main div button:hover,
+#main div button:active {
+  filter: contrast(150%);
+}

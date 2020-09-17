@@ -1,0 +1,38 @@
+{
+  "monster-kill": {
+    "src": "https://cdn.glitch.com/87da8778-e9e9-4f00-87e3-883eb5efeef6%2Fmonster-kill.mp3?v=1600260837026",
+    "name": "Monster kill"
+  },
+  "explosion": {
+    "src": "https://cdn.glitch.com/87da8778-e9e9-4f00-87e3-883eb5efeef6%2FEXPLOSION%202.mp3?v=1600266914050",
+    "name": "Explosion"
+  },
+  "minecraft-hurt": {
+    "src": "https://www.myinstants.com/media/sounds/classic_hurt.mp3",
+    "name": "Minecraft hurt"
+  },
+  "windows-xp-error": {
+    "src": "https://www.myinstants.com/media/sounds/erro.mp3",
+    "name": "Windows XP error"
+  },
+  "muda-muda": {
+    "src": "https://www.myinstants.com/media/sounds/muda_muda_muda_sound_effect.mp3",
+    "name": "Muda muda"
+  },
+  "wryy": {
+    "src": "https://www.myinstants.com/media/sounds/dio-wryyy.mp3",
+    "name": "Wryy"
+  },
+  "fus-roh-dah": {
+    "src": "https://www.myinstants.com/media/sounds/lalala.mp3",
+    "name": "Fus Roh Dah"
+  },
+  "do-it": {
+    "src": "https://www.myinstants.com/media/sounds/shia-labeouf-delivers-the-most-intense-motivational-speech-of-all-time_2.mp3",
+    "name": "DO IT"
+  },
+  "oof": {
+    "src": "https://www.myinstants.com/media/sounds/uuhhh_evAtIOq.mp3",
+    "name": "oof"
+  }
+}

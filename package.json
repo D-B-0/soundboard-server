@@ -1,0 +1,30 @@
+{
+  "name": "soundboard-server",
+  "version": "0.0.1",
+  "description": "A soundboard server to play audio from any davice to any other device.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/soundboard-server"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express",
+    "soundboard",
+    "socket",
+    "socketio",
+    "socket.io",
+    "real-time"
+  ]
+}
