@@ -11,4 +11,5 @@ The sounds are stored with a name and an url, they aren't stored locally
 - [ ] Front-end implementation
   - [ ] Retrive sounds to play
   - [ ] Create new sounds (not approved by default)
-  - [x] Modify [ ] Delete existing sounds (admin page)
+  - [x] Modify existing sounds (admin page)
+  - [ ] Delete existing sounds (admin page)
