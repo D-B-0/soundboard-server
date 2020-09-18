@@ -8,7 +8,7 @@ The sounds are stored with a name and an url, they aren't stored locally
 
 - [x] MongoDB Atlas databaase created
 - [x] Back-end CRUD API
-- [ ] #### Front-end implementation
+- [ ] Front-end implementation
   - [ ] Retrive sounds to play
   - [ ] Create new sounds (not approved by default)
   - [ ] Approve existing sounds (with some sort of authentication)
