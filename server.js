@@ -38,7 +38,7 @@ app.use("/api", apiRouter);
 app.route("/admin")
   .get((req, res) => {
     if (req.signedCookies.loggedIn == "true") {
-      res.sendFile(__dirname + "/views/sounds.html");
+      res.sendFile(__dirname + "/views/soundsAdminControls.html");
     } else {
       res.redirect(`/adminLogin.html`);
     }
