@@ -26,7 +26,9 @@ app.use(express.static("public"));
 const apiRouter = require("./routers");
 app.use("/api", apiRouter);
 
-// Error handler
+// =================
+// ==Error handler==
+// =================
 
 app.use((err, req, res, next) => {
   const {
