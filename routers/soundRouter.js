@@ -5,13 +5,14 @@ const Joi = require("joi");
 const db = require("monk")(process.env.MONGODB_URI);
 const sounds = db.get("sounds");
 const soundSchema = Joi.object({
-  src: Joi.string()
+  url: Joi.string()
     .required()
     .uri(),
-  name: Joi.string().required()
+  name: Joi.string().required(),
+  approved: Joi.bool(),
 });
 const soundUpdateSchema = Joi.object({
-  src: Joi.string()
+  url: Joi.string()
     .uri(),
   name: Joi.string(),
   approved: Joi.bool(),
@@ -47,7 +48,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     Joi.assert(req.body, soundSchema);
-    req.body.approved = false;
+    req.body.approved = req.signedCookies.loggedIn == "true" ? true : false;
     res.send(await sounds.insert(req.body));
   } catch (error) {
     const err = new Error(error.details[0].message);
@@ -59,7 +60,6 @@ router.post("/", async (req, res, next) => {
 router.patch("/:id", async (req, res, next) => {
   try {
     Joi.assert(req.body, soundUpdateSchema);
-    console.log(req.body);
     let result = await sounds.update({
       _id: req.params.id
     }, {

@@ -6,6 +6,7 @@ require("dotenv").config();
 const express = require("express");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const cookieParser = require('cookie-parser');
 const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
@@ -15,8 +16,14 @@ const io = require("socket.io")(server);
 // ====================
 
 app.use(express.json());
-app.use(helmet());
+app.use(express.urlencoded({
+  extended: true
+}));
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
 app.use(morgan("tiny"));
+app.use(cookieParser("secret"));
 app.use(express.static("public"));
 
 // =================
@@ -25,6 +32,29 @@ app.use(express.static("public"));
 
 const apiRouter = require("./routers");
 app.use("/api", apiRouter);
+
+// Admin
+
+app.route("/admin")
+  .get((req, res) => {
+    if (req.signedCookies.loggedIn == "true") {
+      res.sendFile(__dirname + "/views/sounds.html");
+    } else {
+      res.redirect(`/adminLogin.html`);
+    }
+  })
+  .post((req, res) => {
+    console.log(req.body);
+    if (req.body.psw == process.env.ADMIN_PSW) {
+      console.log("Password correct");
+      res
+        .cookie("loggedIn", true, {
+          signed: true,
+          expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
+        });
+    }
+    res.redirect("/admin");
+  });
 
 // =================
 // ==Error handler==

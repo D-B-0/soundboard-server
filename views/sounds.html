@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modify sounds</title>
+</head>
+
+<body>
+  <h1>Modify sounds</h1>
+  <ul id="soundsList">
+
+  </ul>
+
+  <script>
+    (async () => {
+      let data = await fetch("/api/sounds")
+      data = await data.json();
+      for (const sound of data) {
+        soundsList.appendChild(createElement(sound));
+      }
+      console.log(data)
+    })();
+
+    function createElement(info) {
+      const div = document.createElement("div");
+      const statusLabel = document.createElement("label");
+      // div.innerText = `Name: ${info.name}; URL: ${info.src}; `;
+
+      const labelName = document.createElement("label");
+      const inputName = document.createElement("input");
+      inputName.type = "text";
+      labelName.innerText = "Name: ";
+      labelName.setAttribute("for", info._id + "name");
+      inputName.id = info._id + "name";
+      inputName.value = info.name;
+
+      const labelURL = document.createElement("label");
+      const inputURL = document.createElement("input");
+      inputURL.type = "text";
+      labelURL.innerText = "URL: ";
+      labelURL.setAttribute("for", info._id + "url");
+      inputURL.id = info._id + "url";
+      inputURL.value = info.url;
+
+      const labelCheckbox = document.createElement("label");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      labelCheckbox.innerText = "Approved?";
+      labelCheckbox.setAttribute("for", info._id + "check");
+      checkbox.id = info._id + "check";
+      checkbox.checked = info.approved;
+
+      checkbox.addEventListener("change", updateSound);
+      inputName.addEventListener("change", updateSound);
+      inputURL.addEventListener("change", updateSound);
+
+      async function updateSound() {
+        statusLabel.innerText = "Updated ✔";
+        let result = await fetch(`/api/sounds/${info._id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: inputName.value,
+            url: inputURL.value,
+            approved: checkbox.checked,
+          })
+        });
+        if (result.status == 400) {
+          statusLabel.innerText = (await result.json()).message;
+        }
+      }
+
+      div.appendChild(labelName);
+      div.appendChild(inputName);
+
+      div.appendChild(labelURL);
+      div.appendChild(inputURL);
+
+      div.appendChild(labelCheckbox);
+      div.appendChild(checkbox);
+
+      div.appendChild(statusLabel);
+
+      return div;
+    }
+
+  </script>
+</body>
+
+</html>
