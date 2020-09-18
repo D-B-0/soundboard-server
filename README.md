@@ -11,4 +11,4 @@ The sounds are stored with a name and an url, they aren't stored locally
 - [ ] Front-end implementation
   - [ ] Retrive sounds to play
   - [ ] Create new sounds (not approved by default)
-  - [ ] Approve existing sounds (with some sort of authentication)
+  - [ ] Modify/delete existing sounds (admin page)
