@@ -12,4 +12,4 @@ The sounds are stored with a name and an url, they aren't stored locally
   - [ ] Retrive sounds to play
   - [ ] Create new sounds (not approved by default)
   - [x] Modify existing sounds (admin page)
-  - [ ] Delete existing sounds (admin page)
+  - [x] Delete existing sounds (admin page)
