@@ -81,7 +81,7 @@ io.on("connection", (socket) => {
     console.log(`A user connected to room "${roomId}"`);
     socket.join(roomId);
     socket.on("sendSound", (soundInfo) => {
-      console.log(`Sending sound with id "${soundInfo.soundId}" to clients in room "${roomId}"`);
+      console.log(`Sending sound with id "${soundInfo.id}" to clients in room "${roomId}"`);
       io.to(roomId).emit("reciveSound", soundInfo);
     });
   });

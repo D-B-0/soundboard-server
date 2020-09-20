@@ -29,28 +29,28 @@ socket.on('connect', () => {
 socket.emit('connect-to-room', roomId);
 
 socket.on('reciveSound', (data) => {
-  console.log("Playing sound with id:", data.soundId);
-  playAudio(data.soundId);
+  console.log("Playing sound with id:", data.id);
+  playAudio(data.id);
 });
 
 (async () => {
-  const audioInfo = await (await fetch("/audio-info.json")).json();
+  const audioInfo = await (await fetch("/api/sounds")).json();
 
-  for (const soundId in audioInfo) {
+  for (const sound of audioInfo) {
     let div = document.createElement("div");
     let button = document.createElement("button");
     let audio = document.createElement("audio");
     let source = document.createElement("source");
 
-    source.src = audioInfo[soundId].src;
+    source.src = sound.url;
 
     audio.appendChild(source);
-    audio.id = soundId;
+    audio.id = sound._id;
 
-    button.innerText = audioInfo[soundId].name;
+    button.innerText = sound.name;
     button.addEventListener('click', () => {
       socket.emit('sendSound', {
-        soundId
+        id: sound._id
       });
     });
 

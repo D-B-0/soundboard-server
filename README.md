@@ -8,8 +8,8 @@ The sounds are stored with a name and an url, they aren't stored locally
 
 - [x] MongoDB Atlas databaase created
 - [x] Back-end CRUD API
-- [ ] Front-end implementation
-  - [ ] Retrive sounds to play
+- [x] Front-end implementation
+  - [x] Retrive sounds to play
   - [x] Create new sounds (not approved by default)
   - [x] Modify existing sounds (admin page)
   - [x] Delete existing sounds (admin page)
