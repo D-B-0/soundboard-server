@@ -20,7 +20,9 @@ const soundUpdateSchema = Joi.object({
 
 // Get all
 router.get("/", async (req, res) => {
-  res.send(await sounds.find());
+  res.send(await sounds.find({
+    approved: true
+  }));
 });
 
 // Get one
