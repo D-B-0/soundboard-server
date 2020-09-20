@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎶Submit new Audio</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title">Submit a new sound</h1>
+    <a href="/" class="absolute top left">Home</a>
+    <p>The sound will need to be aproved before users will start to see it.</p>
+    <form action="/api/sounds" method="POST" id="f">
+      <label for="name">Name: </label>
+      <input required placeholder="The name of the sound" type="text" name="name" id="name" />
+      <label for="url">Audio url: </label>
+      <input required placeholder="The link to the sound" type="text" name="url" id="url" />
+      <input type="submit" value="Submit" />
+    </form>
+    <p class="error"></p>
+  </div>
+
+  <script defer>
+    const f = document.getElementById("f");
+    const errorElement = document.querySelector("p.error");
+
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const result = await fetch(f.action, {
+        method: f.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: f.name.value,
+          url: f.url.value,
+        }),
+      });
+      if (result.status != 200) {
+        errorElement.innerText = (await result.json()).message;
+      } else {
+        window.location.href = "/";
+      }
+    });
+
+  </script>
+</body>
+
+</html>

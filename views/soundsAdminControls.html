@@ -5,13 +5,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modify sounds</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    div.adminSound {
+      display: flex;
+      margin-bottom: .5rem;
+      align-items: center;
+    }
+
+    div.adminSound * {
+      margin: 0 1rem 0 0;
+    }
+
+    div.adminSound input[type="text"] {
+      max-width: 10%;
+    }
+
+    div.adminSound label.status {
+      width: -moz-available;
+    }
+
+    div.adminSound input[type="checkbox"] {
+      width: auto;
+    }
+
+    ul {
+      padding: 0;
+    }
+
+  </style>
 </head>
 
 <body>
-  <h1>Admin Controls🚧</h1>
-  <ul id="soundsList">
-
-  </ul>
+  <h1 class="title">Admin Controls🚧</h1>
+  <a href="/" class="absolute top left">Home</a>
+  <a href="#" class="absolute top right">Logout</a>
+  <div class="container">
+    <ul id="soundsList"></ul>
+  </div>
 
   <script>
     (async () => {
@@ -20,13 +51,22 @@
       for (const sound of data) {
         soundsList.appendChild(createElement(sound));
       }
-      console.log(data)
     })();
+
+    document.querySelector("a.logout").addEventListener("click", () => {
+      setCookie({
+        name: "loggedIn",
+        value: "",
+        seconds: 1
+      });
+      window.location.href = "/admin";
+    });
 
     function createElement(info) {
       const div = document.createElement("div");
+      div.classList.add("adminSound");
       const statusLabel = document.createElement("label");
-      // div.innerText = `Name: ${info.name}; URL: ${info.src}; `;
+      statusLabel.classList.add("status");
 
       const labelName = document.createElement("label");
       const inputName = document.createElement("input");
@@ -56,6 +96,19 @@
       inputName.addEventListener("change", updateSound);
       inputURL.addEventListener("change", updateSound);
 
+      const audioElement = document.createElement("audio");
+      const sourceElement = document.createElement("source");
+      audioElement.controls = true;
+      audioElement.appendChild(sourceElement)
+      sourceElement.src = inputURL.value;
+      statusLabel.innerText = " - Could not load audio file";
+      audioElement.addEventListener("canplay", () => {
+        console.log(info.name, "audio loaded");
+        if (statusLabel.innerText.endsWith("- Could not load audio file")) {
+          statusLabel.innerText = statusLabel.innerText.split("- Could not load audio file")[0];
+        }
+      });
+
       async function updateSound() {
         statusLabel.innerText = "Updated ✔";
         let result = await fetch(`/api/sounds/${info._id}`, {
@@ -71,6 +124,10 @@
         });
         if (result.status == 400) {
           statusLabel.innerText = (await result.json()).message;
+        } else {
+          sourceElement.src = inputURL.value;
+          statusLabel.innerText += " - Could not load audio file";
+          audioElement.load();
         }
       }
 
@@ -95,6 +152,8 @@
       div.appendChild(labelURL);
       div.appendChild(inputURL);
 
+      div.appendChild(audioElement);
+
       div.appendChild(labelCheckbox);
       div.appendChild(checkbox);
 
@@ -103,6 +162,26 @@
       div.appendChild(deleteButton);
 
       return div;
+    }
+
+    function setCookie({
+      name,
+      value,
+      expireDays,
+      expireHours,
+      expireMinutes,
+      expireSeconds
+    }) {
+      let expireDate = new Date();
+      if (expireDays) expireDate.setDate(expireDate.getDate() + expireDays);
+      if (expireHours) expireDate.setHours(expireDate.getHours() + expireHours);
+      if (expireMinutes) expireDate.setMinutes(expireDate.getMinutes() + expireMinutes);
+      if (expireSeconds) expireDate.setSeconds(expireDate.getSeconds() + expireSeconds);
+
+      document.cookie = name + "=" + escape(value) +
+        ";domain=" + window.location.hostname +
+        ";path=/" +
+        ";expires=" + expireDate.toUTCString();
     }
 
   </script>

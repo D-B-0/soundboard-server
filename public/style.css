@@ -52,8 +52,32 @@ footer {
   background-color: rgb(150, 68, 231);
 }
 
-form {
+/* form {
   margin: 1rem;
+} */
+
+.absolute {
+  position: absolute;
+}
+
+.left {
+  left: 1rem;
+}
+
+.right {
+  right: 1rem;
+}
+
+.top {
+  top: 1rem;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+.container {
+  margin: 3rem;
 }
 
 main {

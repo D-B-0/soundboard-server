@@ -15,13 +15,17 @@
 </head>
 
 <body>
-  <form action="/" method="get" style="width: 20vw;display: inline-block">
-    <input type="text" name="roomId" id="roomId" placeholder="Enter new room" />
-    <input type="submit" value="Enter" />
-    <label for="roomIdDisplay">Display room ID?</label>
-    <input style="display: inline-block; width: auto;" type="checkbox" name="roomIdDisplay" id="roomIdDisplay" />
-    <span id="roomIdElement">Current room ID:&nbsp;</span>
-  </form>
+  <div class="container">
+    <a href="/newSound.html" class="absolute top left">Submit new sound</a>
+    <a href="/admin" class="absolute top right">Admin</a>
+    <form action="/" method="get" style="width: 20vw;display: inline-block">
+      <input type="text" name="roomId" id="roomId" placeholder="Enter new room" />
+      <input type="submit" value="Enter" />
+      <label for="roomIdDisplay">Display room ID?</label>
+      <input style="display: inline-block; width: auto;" type="checkbox" name="roomIdDisplay" id="roomIdDisplay" />
+      <span id="roomIdElement">Current room ID:&nbsp;</span>
+    </form>
+  </div>
   <header>
     <h1 class="title">Soundboard</h1>
   </header>

@@ -5,13 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-  <form action="/admin" method="post" id="f">
-    <input type="password" name="psw" id="psw" />
-    <input type="submit" value="Submit" id="submit" />
-  </form>
+  <div class="container">
+    <a href="/" class="absolute top left">Home</a>
+    <h1 class="title">Log in to admin console</h1>
+    <form action="/admin" method="post" id="f">
+      <input style="text-align: center;" type="password" name="psw" id="psw" />
+      <input type="submit" value="Submit" id="submit" />
+    </form>
+  </div>
 
 </body>
 
