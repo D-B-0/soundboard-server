@@ -46,7 +46,7 @@
 
   <script>
     (async () => {
-      let data = await fetch("/api/sounds")
+      let data = await fetch("/api/sounds?onlyApproved=false")
       data = await data.json();
       for (const sound of data) {
         soundsList.appendChild(createElement(sound));
