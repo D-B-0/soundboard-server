@@ -20,7 +20,7 @@ const soundUpdateSchema = Joi.object({
 
 // Get all
 router.get("/", async (req, res) => {
-  if (req.query.onlyApprved == "false") {
+  if (req.query.onlyApproved == "false") {
     res.send(await sounds.find());
   } else {
     res.send(await sounds.find({
